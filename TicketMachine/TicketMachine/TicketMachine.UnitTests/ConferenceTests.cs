@@ -4,33 +4,38 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Orleans.Samples.Testing;
 using TicketMachine.Interfaces;
 using Xunit;
+using Assert = Xunit.Assert;
 
 namespace TicketMachine.UnitTests
 {
-    public class ConferenceTests : IDisposable
+     [TestClass]
+    public class ConferenceTests
     {
         private static readonly UnitTestSiloOptions siloOptions = new UnitTestSiloOptions
         {
-            StartFreshOrleans = true
+            StartFreshOrleans = true,
         };
         private static readonly UnitTestClientOptions clientOptions = new UnitTestClientOptions
         {
             ResponseTimeout = TimeSpan.FromSeconds(30)
         };
 
-        private UnitTestSiloHost _unitTestSiloHost;
+        private static UnitTestSiloHost _unitTestSiloHost;
 
-
-        public ConferenceTests()
+        [ClassInitialize]
+        public static void ClassInitialize(TestContext testContext)
         {
             _unitTestSiloHost = new UnitTestSiloHost(siloOptions, clientOptions);
+
+         
         }
 
-        [Fact]
-        public async void GetName_Should_return_name()
+        [TestMethod]
+        public async Task GetName_Should_return_name()
         {
             var conferenceId = Guid.NewGuid();
             var conference = ConferenceFactory.GetGrain(conferenceId);
@@ -39,7 +44,8 @@ namespace TicketMachine.UnitTests
             Assert.False(string.IsNullOrEmpty(name));
         }
 
-        public void Dispose()
+        [ClassCleanup]
+        public static void ClassCleanup()
         {
             if (_unitTestSiloHost != null)
             {
