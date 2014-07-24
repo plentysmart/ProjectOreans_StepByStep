@@ -34,24 +34,32 @@ namespace Advanced.UnitTests
         }
 
         [TestMethod]
-        public async Task GetName_Should_return_name()
+        public async Task StatelessGrains()
         {
             var max = 1000;
+            var maxTasks = 10;
              ConcurrentBag<int> bag = new ConcurrentBag<int>();
             var tasksList = new List<Task>();
-            for (int i = 0; i < max; i++)
+
+            for (int j = 0; j < maxTasks; j++)
             {
-                var task = new Task(async () =>
+                var task = new Task( () =>
                 {
-                    var grain = StatelessGrainFactory.GetGrain(0);
-                    var reference = await grain.GetObjectReference();
-                    bag.Add(reference);
+                    for (int i = 0; i < max; i++)
+                    {
+                        var grain = StatelessGrainFactory.GetGrain(0);
+                        var reference = grain.GetObjectReference().Result;
+                        bag.Add(reference);
+                    }
+                    ;
                 });
+                task.Start();
                 tasksList.Add(task);
             }
-            Parallel.ForEach(tasksList, (t) => t.Start());
+
             Task.WaitAll(tasksList.ToArray());
             Assert.IsTrue(bag.Any());
+            Assert.IsTrue(bag.Distinct().Count() >1);
         }
 
         [ClassCleanup]
