@@ -49,6 +49,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cache\StockCache.cs" />
+    <Compile Include="Cache\StockProduct.cs" />
     <Compile Include="StatelessGrain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

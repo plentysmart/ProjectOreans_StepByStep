@@ -14,6 +14,503 @@
 #pragma warning disable 1591
 #pragma warning disable 1998
 
+namespace Advanced.Interfaces.Cache
+{
+    using System;
+    using System.Net;
+    using System.Runtime.Serialization;
+    using System.Runtime.Serialization.Formatters.Binary;
+    using System.IO;
+    using System.Collections.Generic;
+    using Orleans;
+    
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Orleans-CodeGenerator", "1.0.814.60418")]
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute()]
+    public class StockCacheFactory
+    {
+        
+
+                        public static IStockCache GetGrain(long primaryKey)
+                        {
+                            return Cast(GrainFactoryBase.MakeGrainReferenceInternal(typeof(IStockCache), 1150115838, primaryKey));
+                        }
+
+                        public static IStockCache GetGrain(long primaryKey, string grainClassNamePrefix)
+                        {
+                            return Cast(GrainFactoryBase.MakeGrainReferenceInternal(typeof(IStockCache), 1150115838, primaryKey, grainClassNamePrefix));
+                        }
+
+                        public static IStockCache GetGrain(Guid primaryKey)
+                        {
+                            return Cast(GrainFactoryBase.MakeGrainReferenceInternal(typeof(IStockCache), 1150115838, primaryKey));
+                        }
+
+                        public static IStockCache GetGrain(Guid primaryKey, string grainClassNamePrefix)
+                        {
+                            return Cast(GrainFactoryBase.MakeGrainReferenceInternal(typeof(IStockCache), 1150115838, primaryKey, grainClassNamePrefix));
+                        }
+
+            public static IStockCache Cast(IAddressable grainRef)
+            {
+                
+                return StockCacheReference.Cast(grainRef);
+            }
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("Orleans-CodeGenerator", "1.0.814.60418")]
+        [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute()]
+        [System.SerializableAttribute()]
+        [Orleans.GrainReferenceAttribute("Advanced.Interfaces.Cache.IStockCache")]
+        internal class StockCacheReference : Orleans.GrainReference, IStockCache, Orleans.IAddressable
+        {
+            
+
+            public static IStockCache Cast(IAddressable grainRef)
+            {
+                
+                return (IStockCache) GrainReference.CastInternal(typeof(IStockCache), (GrainReference gr) => { return new StockCacheReference(gr);}, grainRef, 1150115838);
+            }
+
+                protected override int InterfaceId { get { return 1150115838; } }
+
+                public override bool IsCompatible(int interfaceId) { return interfaceId == this.InterfaceId; }
+
+                protected override string InterfaceName { get { return "Advanced.Interfaces.Cache.IStockCache"; } }
+
+                protected override string GetMethodName(int interfaceId, int methodId) { return StockCacheMethodInvoker.GetMethodName(interfaceId, methodId); }
+            
+            protected internal StockCacheReference(GrainReference reference) : 
+                    base(reference)
+            {
+            }
+            
+            [Orleans.CopierMethodAttribute()]
+            public static object _Copier(object original)
+            {
+                StockCacheReference input = ((StockCacheReference)(original));
+                return ((StockCacheReference)(GrainReference.CopyGrainReference(input)));
+            }
+            
+            [Orleans.SerializerMethodAttribute()]
+            public static void _Serializer(object original, Orleans.Serialization.BinaryTokenStreamWriter stream, System.Type expected)
+            {
+                StockCacheReference input = ((StockCacheReference)(original));
+                GrainReference.SerializeGrainReference(input, stream, expected);
+            }
+            
+            [Orleans.DeserializerMethodAttribute()]
+            public static object _Deserializer(System.Type expected, Orleans.Serialization.BinaryTokenStreamReader stream)
+            {
+                return StockCacheReference.Cast(((Orleans.GrainReference)(GrainReference.DeserializeGrainReference(expected, stream))));
+            }
+            
+            public System.Threading.Tasks.Task<int> GetAvailable()
+            {
+
+                return base.InvokeMethodAsync<System.Int32>(-1928350639, new object[] {}, TimeSpan.Zero , options:  InvokeMethodOptions.Unordered);
+            }
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Orleans-CodeGenerator", "1.0.814.60418")]
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute()]
+    [Orleans.MethodInvokerAttribute("Advanced.Interfaces.Cache.IStockCache", 1150115838)]
+    internal class StockCacheMethodInvoker : IGrainMethodInvoker
+    {
+        
+        public int InterfaceId
+        {
+            get
+            {
+                return 1150115838;
+            }
+        }
+        
+        public async System.Threading.Tasks.Task<Object> Invoke(IAddressable grain, int interfaceId, int methodId, object[] arguments)
+        {
+                if (grain == null) throw new System.ArgumentNullException("grain");
+                switch (interfaceId)
+                {
+                    case 1150115838:  // IStockCache
+                        switch (methodId)
+                        {
+                            case -1928350639: 
+                                return await ((IStockCache)grain).GetAvailable();
+                            default: 
+                                throw new NotImplementedException("interfaceId="+interfaceId+",methodId="+methodId);
+                        }
+                    default:
+                        throw new System.InvalidCastException("interfaceId="+interfaceId);
+                }
+        }
+        
+        public static string GetMethodName(int interfaceId, int methodId)
+        {
+
+            switch (interfaceId)
+            {
+                
+                case 1150115838:  // IStockCache
+                    switch (methodId)
+                    {
+                        case -1928350639:
+                            return "GetAvailable";
+                    case -606142484:
+                            return "GetProperties";
+                    
+                        default: 
+                            throw new NotImplementedException("interfaceId="+interfaceId+",methodId="+methodId);
+                    }
+
+                default:
+                    throw new System.InvalidCastException("interfaceId="+interfaceId);
+            }
+        }
+    }
+    
+    [Serializable()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Orleans-CodeGenerator", "1.0.814.60418")]
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute()]
+    public class StockCacheProperties
+    {
+        
+
+            public Dictionary<string,object> AsDictionary()
+            {  
+                var retValue = new Dictionary<string,object>();
+                return retValue;
+            }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Orleans-CodeGenerator", "1.0.814.60418")]
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute()]
+    public class StockObserverFactory
+    {
+        
+
+            public static IStockObserver Cast(IAddressable grainRef)
+            {
+                
+                return StockObserverReference.Cast(grainRef);
+            }
+
+        private static IGrainMethodInvoker methodInvoker;
+
+        public async static System.Threading.Tasks.Task<IStockObserver> CreateObjectReference(IStockObserver obj)
+        {
+            if (methodInvoker == null) methodInvoker = new StockObserverMethodInvoker();
+            return StockObserverFactory.Cast(await GrainReference.CreateObjectReference(obj, methodInvoker));
+        }
+
+        public static void DeleteObjectReference(IStockObserver reference)
+        {
+            GrainReference.DeleteObjectReference(reference);
+        }
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("Orleans-CodeGenerator", "1.0.814.60418")]
+        [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute()]
+        [System.SerializableAttribute()]
+        [Orleans.GrainReferenceAttribute("Advanced.Interfaces.Cache.IStockObserver")]
+        internal class StockObserverReference : Orleans.GrainReference, IStockObserver, Orleans.IAddressable
+        {
+            
+
+            public static IStockObserver Cast(IAddressable grainRef)
+            {
+                
+                return (IStockObserver) GrainReference.CastInternal(typeof(IStockObserver), (GrainReference gr) => { return new StockObserverReference(gr);}, grainRef, -1914483662);
+            }
+
+                protected override int InterfaceId { get { return -1914483662; } }
+
+                public override bool IsCompatible(int interfaceId) { return interfaceId == this.InterfaceId; }
+
+                protected override string InterfaceName { get { return "Advanced.Interfaces.Cache.IStockObserver"; } }
+
+                protected override string GetMethodName(int interfaceId, int methodId) { return StockObserverMethodInvoker.GetMethodName(interfaceId, methodId); }
+            
+            protected internal StockObserverReference(GrainReference reference) : 
+                    base(reference)
+            {
+            }
+            
+            [Orleans.CopierMethodAttribute()]
+            public static object _Copier(object original)
+            {
+                StockObserverReference input = ((StockObserverReference)(original));
+                return ((StockObserverReference)(GrainReference.CopyGrainReference(input)));
+            }
+            
+            [Orleans.SerializerMethodAttribute()]
+            public static void _Serializer(object original, Orleans.Serialization.BinaryTokenStreamWriter stream, System.Type expected)
+            {
+                StockObserverReference input = ((StockObserverReference)(original));
+                GrainReference.SerializeGrainReference(input, stream, expected);
+            }
+            
+            [Orleans.DeserializerMethodAttribute()]
+            public static object _Deserializer(System.Type expected, Orleans.Serialization.BinaryTokenStreamReader stream)
+            {
+                return StockObserverReference.Cast(((Orleans.GrainReference)(GrainReference.DeserializeGrainReference(expected, stream))));
+            }
+            
+            public void UpdatAvailableItems(int avaiable)
+            {
+
+                base.InvokeOneWayMethod(382608387, new object[] {avaiable} );
+            }
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Orleans-CodeGenerator", "1.0.814.60418")]
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute()]
+    [Orleans.MethodInvokerAttribute("Advanced.Interfaces.Cache.IStockObserver", -1914483662)]
+    internal class StockObserverMethodInvoker : IGrainMethodInvoker
+    {
+        
+        public int InterfaceId
+        {
+            get
+            {
+                return -1914483662;
+            }
+        }
+        
+        public async System.Threading.Tasks.Task<Object> Invoke(IAddressable grain, int interfaceId, int methodId, object[] arguments)
+        {
+                if (grain == null) throw new System.ArgumentNullException("grain");
+                switch (interfaceId)
+                {
+                    case -1914483662:  // IStockObserver
+                        switch (methodId)
+                        {
+                            case 382608387: 
+                                ((IStockObserver)grain).UpdatAvailableItems((Int32)arguments[0]); return true;
+                            default: 
+                                throw new NotImplementedException("interfaceId="+interfaceId+",methodId="+methodId);
+                        }
+                    default:
+                        throw new System.InvalidCastException("interfaceId="+interfaceId);
+                }
+        }
+        
+        public static string GetMethodName(int interfaceId, int methodId)
+        {
+
+            switch (interfaceId)
+            {
+                
+                case -1914483662:  // IStockObserver
+                    switch (methodId)
+                    {
+                        case 382608387:
+                            return "UpdatAvailableItems";
+                    case -606142484:
+                            return "GetProperties";
+                    
+                        default: 
+                            throw new NotImplementedException("interfaceId="+interfaceId+",methodId="+methodId);
+                    }
+
+                default:
+                    throw new System.InvalidCastException("interfaceId="+interfaceId);
+            }
+        }
+    }
+    
+    [Serializable()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Orleans-CodeGenerator", "1.0.814.60418")]
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute()]
+    public class StockObserverProperties
+    {
+        
+
+            public Dictionary<string,object> AsDictionary()
+            {  
+                var retValue = new Dictionary<string,object>();
+                return retValue;
+            }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Orleans-CodeGenerator", "1.0.814.60418")]
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute()]
+    public class StockProductFactory
+    {
+        
+
+                        public static IStockProduct GetGrain(long primaryKey)
+                        {
+                            return Cast(GrainFactoryBase.MakeGrainReferenceInternal(typeof(IStockProduct), -154197694, primaryKey));
+                        }
+
+                        public static IStockProduct GetGrain(long primaryKey, string grainClassNamePrefix)
+                        {
+                            return Cast(GrainFactoryBase.MakeGrainReferenceInternal(typeof(IStockProduct), -154197694, primaryKey, grainClassNamePrefix));
+                        }
+
+                        public static IStockProduct GetGrain(Guid primaryKey)
+                        {
+                            return Cast(GrainFactoryBase.MakeGrainReferenceInternal(typeof(IStockProduct), -154197694, primaryKey));
+                        }
+
+                        public static IStockProduct GetGrain(Guid primaryKey, string grainClassNamePrefix)
+                        {
+                            return Cast(GrainFactoryBase.MakeGrainReferenceInternal(typeof(IStockProduct), -154197694, primaryKey, grainClassNamePrefix));
+                        }
+
+            public static IStockProduct Cast(IAddressable grainRef)
+            {
+                
+                return StockProductReference.Cast(grainRef);
+            }
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("Orleans-CodeGenerator", "1.0.814.60418")]
+        [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute()]
+        [System.SerializableAttribute()]
+        [Orleans.GrainReferenceAttribute("Advanced.Interfaces.Cache.IStockProduct")]
+        internal class StockProductReference : Orleans.GrainReference, IStockProduct, Orleans.IAddressable
+        {
+            
+
+            public static IStockProduct Cast(IAddressable grainRef)
+            {
+                
+                return (IStockProduct) GrainReference.CastInternal(typeof(IStockProduct), (GrainReference gr) => { return new StockProductReference(gr);}, grainRef, -154197694);
+            }
+
+                protected override int InterfaceId { get { return -154197694; } }
+
+                public override bool IsCompatible(int interfaceId) { return interfaceId == this.InterfaceId; }
+
+                protected override string InterfaceName { get { return "Advanced.Interfaces.Cache.IStockProduct"; } }
+
+                protected override string GetMethodName(int interfaceId, int methodId) { return StockProductMethodInvoker.GetMethodName(interfaceId, methodId); }
+            
+            protected internal StockProductReference(GrainReference reference) : 
+                    base(reference)
+            {
+            }
+            
+            [Orleans.CopierMethodAttribute()]
+            public static object _Copier(object original)
+            {
+                StockProductReference input = ((StockProductReference)(original));
+                return ((StockProductReference)(GrainReference.CopyGrainReference(input)));
+            }
+            
+            [Orleans.SerializerMethodAttribute()]
+            public static void _Serializer(object original, Orleans.Serialization.BinaryTokenStreamWriter stream, System.Type expected)
+            {
+                StockProductReference input = ((StockProductReference)(original));
+                GrainReference.SerializeGrainReference(input, stream, expected);
+            }
+            
+            [Orleans.DeserializerMethodAttribute()]
+            public static object _Deserializer(System.Type expected, Orleans.Serialization.BinaryTokenStreamReader stream)
+            {
+                return StockProductReference.Cast(((Orleans.GrainReference)(GrainReference.DeserializeGrainReference(expected, stream))));
+            }
+            
+            public System.Threading.Tasks.Task UpdateAvailability(int availability)
+            {
+
+                return base.InvokeMethodAsync<object>(-368686723, new object[] {availability}, TimeSpan.Zero );
+            }
+            
+            public System.Threading.Tasks.Task<int> AddSubscriber(Advanced.Interfaces.Cache.IStockObserver observer)
+            {
+GrainFactoryBase.CheckGrainObserverParamInternal(observer);
+
+                return base.InvokeMethodAsync<System.Int32>(1194296998, new object[] {observer is GrainBase ? Advanced.Interfaces.Cache.StockObserverFactory.Cast(observer.AsReference()) : observer}, TimeSpan.Zero );
+            }
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Orleans-CodeGenerator", "1.0.814.60418")]
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute()]
+    [Orleans.MethodInvokerAttribute("Advanced.Interfaces.Cache.IStockProduct", -154197694)]
+    internal class StockProductMethodInvoker : IGrainMethodInvoker
+    {
+        
+        public int InterfaceId
+        {
+            get
+            {
+                return -154197694;
+            }
+        }
+        
+        public async System.Threading.Tasks.Task<Object> Invoke(IAddressable grain, int interfaceId, int methodId, object[] arguments)
+        {
+                if (grain == null) throw new System.ArgumentNullException("grain");
+                switch (interfaceId)
+                {
+                    case -154197694:  // IStockProduct
+                        switch (methodId)
+                        {
+                            case -368686723: 
+                                await ((IStockProduct)grain).UpdateAvailability((Int32)arguments[0]);
+                              return true;
+                            case 1194296998: 
+                                return await ((IStockProduct)grain).AddSubscriber((IStockObserver)arguments[0]);
+                            default: 
+                                throw new NotImplementedException("interfaceId="+interfaceId+",methodId="+methodId);
+                        }
+                    default:
+                        throw new System.InvalidCastException("interfaceId="+interfaceId);
+                }
+        }
+        
+        public static string GetMethodName(int interfaceId, int methodId)
+        {
+
+            switch (interfaceId)
+            {
+                
+                case -154197694:  // IStockProduct
+                    switch (methodId)
+                    {
+                        case -368686723:
+                            return "UpdateAvailability";
+                    case 1194296998:
+                            return "AddSubscriber";
+                    case -606142484:
+                            return "GetProperties";
+                    
+                        default: 
+                            throw new NotImplementedException("interfaceId="+interfaceId+",methodId="+methodId);
+                    }
+
+                default:
+                    throw new System.InvalidCastException("interfaceId="+interfaceId);
+            }
+        }
+    }
+    
+    [Serializable()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Orleans-CodeGenerator", "1.0.814.60418")]
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute()]
+    public class StockProductProperties
+    {
+        
+
+            public Dictionary<string,object> AsDictionary()
+            {  
+                var retValue = new Dictionary<string,object>();
+                return retValue;
+            }
+    }
+}
+//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//     Runtime Version:4.0.30319.34014
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
 namespace Advanced.Interfaces
 {
     using System;
