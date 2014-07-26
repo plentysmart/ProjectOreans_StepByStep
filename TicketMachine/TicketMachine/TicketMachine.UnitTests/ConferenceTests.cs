@@ -26,15 +26,13 @@ namespace TicketMachine.UnitTests
 
         private static UnitTestSiloHost _unitTestSiloHost;
 
-        [ClassInitialize]
-        public static void ClassInitialize(TestContext testContext)
-        {
-            _unitTestSiloHost = new UnitTestSiloHost(siloOptions, clientOptions);
+         [ClassInitialize]
+         public static void ClassInitialize(TestContext testContext)
+         {
+             _unitTestSiloHost = new UnitTestSiloHost(siloOptions, clientOptions);
+         }
 
-         
-        }
-
-        [TestMethod]
+         [TestMethod]
         public async Task GetName_Should_return_name()
         {
             var conferenceId = Guid.NewGuid();
