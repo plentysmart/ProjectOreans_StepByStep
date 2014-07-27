@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Threading.Tasks;
 using System.Web.Mvc;
+using TicketMachine.Interfaces;
 
 namespace TicketMaster.WebUI.Controllers
 {
@@ -10,21 +8,9 @@ namespace TicketMaster.WebUI.Controllers
     {
         public ActionResult Index()
         {
-            return View();
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            var eventManager=  EventManagerFactory.GetGrain(0);
+            var events = eventManager.GetAllEvents().Result;
+            return View(events);
         }
     }
 }

@@ -1,5 +1,5 @@
 @setlocal
 @echo off
 @if NOT "%ECHO%"=="" @echo %ECHO%
-
-"%OrleansSDK%\StartLocalSilo.cmd"
+cd TicketMaster.WebUI\bin
+"%OrleansSDK%\Binaries\OrleansServer\OrleansHost.exe" DevSilo ..\OrleansConfiguration.xml

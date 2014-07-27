@@ -6,7 +6,6 @@ using TicketMachine.Interfaces;
 
 namespace TicketMachine
 {
-     [StorageProvider(ProviderName = "MemoryStore")]
     public class EventManager : GrainBase<IEventManagerState>, IEventManager
     {
          public override Task ActivateAsync()
@@ -15,7 +14,7 @@ namespace TicketMachine
                  throw new InvalidOperationException("You can't get other event manager other than with id = 0");
              if (State.Events == null)
                  this.State.Events = new List<EventInfo>();
-             this.State.WriteStateAsync().Wait();
+             this.State.WriteStateAsync();
              return base.ActivateAsync();
          }
 
