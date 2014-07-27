@@ -13,7 +13,7 @@ using Assert = Xunit.Assert;
 namespace TicketMachine.UnitTests
 {
      [TestClass]
-    public class ConferenceTests
+    public class EventManagerTests
     {
         private static readonly UnitTestSiloOptions siloOptions = new UnitTestSiloOptions
         {
@@ -33,16 +33,23 @@ namespace TicketMachine.UnitTests
          }
 
          [TestMethod]
-        public async Task GetName_Should_return_name()
-        {
-            var conferenceId = Guid.NewGuid();
-            var conference = ConferenceFactory.GetGrain(conferenceId);
-            var name = await conference.GetName();
-            Debug.WriteLine(name);
-            Assert.False(string.IsNullOrEmpty(name));
-        }
+         public async Task when_new_event_added_should_return_id()
+         {
+             var eventSettings = new EventSettings {Name = "NewEvent"};
+             var eventManager = EventManagerFactory.GetGrain(0);
+             var eventId = await eventManager.AddEvent(eventSettings);
+             Assert.NotEqual(Guid.Empty, eventId);
+         }
 
-        [ClassCleanup]
+         [TestMethod]
+         public async Task should_throw_exception_when_initalizing_event_manager_with_id_other_than_0()
+         {
+             var eventManager = EventManagerFactory.GetGrain(124);
+             Assert.Throws<AggregateException>(() => eventManager.GetAllEvents().Wait());
+         }
+
+
+         [ClassCleanup]
         public static void ClassCleanup()
         {
             if (_unitTestSiloHost != null)

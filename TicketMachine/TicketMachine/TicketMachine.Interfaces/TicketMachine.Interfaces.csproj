@@ -44,7 +44,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IConference.cs" />
+    <Compile Include="IEvent.cs" />
+    <Compile Include="IEventManager.cs" />
     <Compile Include="Properties\orleans.codegen.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

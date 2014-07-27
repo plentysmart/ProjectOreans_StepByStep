@@ -23,64 +23,67 @@ namespace TicketMachine.Interfaces
     using System.IO;
     using System.Collections.Generic;
     using Orleans;
+    using System.Reflection;
+    using Orleans.Serialization;
+    using TicketMachine.Interfaces;
     using System.Collections;
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Orleans-CodeGenerator", "1.0.814.60418")]
     [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute()]
-    public class ConferenceFactory
+    public class EventFactory
     {
         
 
-                        public static IConference GetGrain(long primaryKey)
+                        public static IEvent GetGrain(long primaryKey)
                         {
-                            return Cast(GrainFactoryBase.MakeGrainReferenceInternal(typeof(IConference), 767803674, primaryKey));
+                            return Cast(GrainFactoryBase.MakeGrainReferenceInternal(typeof(IEvent), 51380706, primaryKey));
                         }
 
-                        public static IConference GetGrain(long primaryKey, string grainClassNamePrefix)
+                        public static IEvent GetGrain(long primaryKey, string grainClassNamePrefix)
                         {
-                            return Cast(GrainFactoryBase.MakeGrainReferenceInternal(typeof(IConference), 767803674, primaryKey, grainClassNamePrefix));
+                            return Cast(GrainFactoryBase.MakeGrainReferenceInternal(typeof(IEvent), 51380706, primaryKey, grainClassNamePrefix));
                         }
 
-                        public static IConference GetGrain(Guid primaryKey)
+                        public static IEvent GetGrain(Guid primaryKey)
                         {
-                            return Cast(GrainFactoryBase.MakeGrainReferenceInternal(typeof(IConference), 767803674, primaryKey));
+                            return Cast(GrainFactoryBase.MakeGrainReferenceInternal(typeof(IEvent), 51380706, primaryKey));
                         }
 
-                        public static IConference GetGrain(Guid primaryKey, string grainClassNamePrefix)
+                        public static IEvent GetGrain(Guid primaryKey, string grainClassNamePrefix)
                         {
-                            return Cast(GrainFactoryBase.MakeGrainReferenceInternal(typeof(IConference), 767803674, primaryKey, grainClassNamePrefix));
+                            return Cast(GrainFactoryBase.MakeGrainReferenceInternal(typeof(IEvent), 51380706, primaryKey, grainClassNamePrefix));
                         }
 
-            public static IConference Cast(IAddressable grainRef)
+            public static IEvent Cast(IAddressable grainRef)
             {
                 
-                return ConferenceReference.Cast(grainRef);
+                return EventReference.Cast(grainRef);
             }
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("Orleans-CodeGenerator", "1.0.814.60418")]
         [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute()]
         [System.SerializableAttribute()]
-        [Orleans.GrainReferenceAttribute("TicketMachine.Interfaces.IConference")]
-        internal class ConferenceReference : Orleans.GrainReference, IConference, Orleans.IAddressable
+        [Orleans.GrainReferenceAttribute("TicketMachine.Interfaces.IEvent")]
+        internal class EventReference : Orleans.GrainReference, IEvent, Orleans.IAddressable
         {
             
 
-            public static IConference Cast(IAddressable grainRef)
+            public static IEvent Cast(IAddressable grainRef)
             {
                 
-                return (IConference) GrainReference.CastInternal(typeof(IConference), (GrainReference gr) => { return new ConferenceReference(gr);}, grainRef, 767803674);
+                return (IEvent) GrainReference.CastInternal(typeof(IEvent), (GrainReference gr) => { return new EventReference(gr);}, grainRef, 51380706);
             }
 
-                protected override int InterfaceId { get { return 767803674; } }
+                protected override int InterfaceId { get { return 51380706; } }
 
                 public override bool IsCompatible(int interfaceId) { return interfaceId == this.InterfaceId; }
 
-                protected override string InterfaceName { get { return "TicketMachine.Interfaces.IConference"; } }
+                protected override string InterfaceName { get { return "TicketMachine.Interfaces.IEvent"; } }
 
-                protected override string GetMethodName(int interfaceId, int methodId) { return ConferenceMethodInvoker.GetMethodName(interfaceId, methodId); }
+                protected override string GetMethodName(int interfaceId, int methodId) { return EventMethodInvoker.GetMethodName(interfaceId, methodId); }
             
-            protected internal ConferenceReference(GrainReference reference) : 
+            protected internal EventReference(GrainReference reference) : 
                     base(reference)
             {
             }
@@ -88,42 +91,42 @@ namespace TicketMachine.Interfaces
             [Orleans.CopierMethodAttribute()]
             public static object _Copier(object original)
             {
-                ConferenceReference input = ((ConferenceReference)(original));
-                return ((ConferenceReference)(GrainReference.CopyGrainReference(input)));
+                EventReference input = ((EventReference)(original));
+                return ((EventReference)(GrainReference.CopyGrainReference(input)));
             }
             
             [Orleans.SerializerMethodAttribute()]
             public static void _Serializer(object original, Orleans.Serialization.BinaryTokenStreamWriter stream, System.Type expected)
             {
-                ConferenceReference input = ((ConferenceReference)(original));
+                EventReference input = ((EventReference)(original));
                 GrainReference.SerializeGrainReference(input, stream, expected);
             }
             
             [Orleans.DeserializerMethodAttribute()]
             public static object _Deserializer(System.Type expected, Orleans.Serialization.BinaryTokenStreamReader stream)
             {
-                return ConferenceReference.Cast(((Orleans.GrainReference)(GrainReference.DeserializeGrainReference(expected, stream))));
+                return EventReference.Cast(((Orleans.GrainReference)(GrainReference.DeserializeGrainReference(expected, stream))));
             }
             
-            public System.Threading.Tasks.Task<string> GetName()
+            public System.Threading.Tasks.Task Initialize(TicketMachine.Interfaces.EventSettings eventSettings)
             {
 
-                return base.InvokeMethodAsync<System.String>(-1256896228, new object[] {}, TimeSpan.Zero );
+                return base.InvokeMethodAsync<object>(-1727646359, new object[] {eventSettings}, TimeSpan.Zero );
             }
         }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Orleans-CodeGenerator", "1.0.814.60418")]
     [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute()]
-    [Orleans.MethodInvokerAttribute("TicketMachine.Interfaces.IConference", 767803674)]
-    internal class ConferenceMethodInvoker : IGrainMethodInvoker
+    [Orleans.MethodInvokerAttribute("TicketMachine.Interfaces.IEvent", 51380706)]
+    internal class EventMethodInvoker : IGrainMethodInvoker
     {
         
         public int InterfaceId
         {
             get
             {
-                return 767803674;
+                return 51380706;
             }
         }
         
@@ -132,11 +135,12 @@ namespace TicketMachine.Interfaces
                 if (grain == null) throw new System.ArgumentNullException("grain");
                 switch (interfaceId)
                 {
-                    case 767803674:  // IConference
+                    case 51380706:  // IEvent
                         switch (methodId)
                         {
-                            case -1256896228: 
-                                return await ((IConference)grain).GetName();
+                            case -1727646359: 
+                                await ((IEvent)grain).Initialize((EventSettings)arguments[0]);
+                              return true;
                             default: 
                                 throw new NotImplementedException("interfaceId="+interfaceId+",methodId="+methodId);
                         }
@@ -151,11 +155,11 @@ namespace TicketMachine.Interfaces
             switch (interfaceId)
             {
                 
-                case 767803674:  // IConference
+                case 51380706:  // IEvent
                     switch (methodId)
                     {
-                        case -1256896228:
-                            return "GetName";
+                        case -1727646359:
+                            return "Initialize";
                     case -606142484:
                             return "GetProperties";
                     
@@ -172,7 +176,7 @@ namespace TicketMachine.Interfaces
     [Serializable()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Orleans-CodeGenerator", "1.0.814.60418")]
     [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute()]
-    public class ConferenceProperties
+    public class EventProperties
     {
         
 
@@ -181,6 +185,258 @@ namespace TicketMachine.Interfaces
                 var retValue = new Dictionary<string,object>();
                 return retValue;
             }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Orleans-CodeGenerator", "1.0.814.60418")]
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute()]
+    public class EventManagerFactory
+    {
+        
+
+                        public static IEventManager GetGrain(long primaryKey)
+                        {
+                            return Cast(GrainFactoryBase.MakeGrainReferenceInternal(typeof(IEventManager), 190099299, primaryKey));
+                        }
+
+                        public static IEventManager GetGrain(long primaryKey, string grainClassNamePrefix)
+                        {
+                            return Cast(GrainFactoryBase.MakeGrainReferenceInternal(typeof(IEventManager), 190099299, primaryKey, grainClassNamePrefix));
+                        }
+
+                        public static IEventManager GetGrain(Guid primaryKey)
+                        {
+                            return Cast(GrainFactoryBase.MakeGrainReferenceInternal(typeof(IEventManager), 190099299, primaryKey));
+                        }
+
+                        public static IEventManager GetGrain(Guid primaryKey, string grainClassNamePrefix)
+                        {
+                            return Cast(GrainFactoryBase.MakeGrainReferenceInternal(typeof(IEventManager), 190099299, primaryKey, grainClassNamePrefix));
+                        }
+
+            public static IEventManager Cast(IAddressable grainRef)
+            {
+                
+                return EventManagerReference.Cast(grainRef);
+            }
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("Orleans-CodeGenerator", "1.0.814.60418")]
+        [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute()]
+        [System.SerializableAttribute()]
+        [Orleans.GrainReferenceAttribute("TicketMachine.Interfaces.IEventManager")]
+        internal class EventManagerReference : Orleans.GrainReference, IEventManager, Orleans.IAddressable
+        {
+            
+
+            public static IEventManager Cast(IAddressable grainRef)
+            {
+                
+                return (IEventManager) GrainReference.CastInternal(typeof(IEventManager), (GrainReference gr) => { return new EventManagerReference(gr);}, grainRef, 190099299);
+            }
+
+                protected override int InterfaceId { get { return 190099299; } }
+
+                public override bool IsCompatible(int interfaceId) { return interfaceId == this.InterfaceId; }
+
+                protected override string InterfaceName { get { return "TicketMachine.Interfaces.IEventManager"; } }
+
+                protected override string GetMethodName(int interfaceId, int methodId) { return EventManagerMethodInvoker.GetMethodName(interfaceId, methodId); }
+            
+            protected internal EventManagerReference(GrainReference reference) : 
+                    base(reference)
+            {
+            }
+            
+            [Orleans.CopierMethodAttribute()]
+            public static object _Copier(object original)
+            {
+                EventManagerReference input = ((EventManagerReference)(original));
+                return ((EventManagerReference)(GrainReference.CopyGrainReference(input)));
+            }
+            
+            [Orleans.SerializerMethodAttribute()]
+            public static void _Serializer(object original, Orleans.Serialization.BinaryTokenStreamWriter stream, System.Type expected)
+            {
+                EventManagerReference input = ((EventManagerReference)(original));
+                GrainReference.SerializeGrainReference(input, stream, expected);
+            }
+            
+            [Orleans.DeserializerMethodAttribute()]
+            public static object _Deserializer(System.Type expected, Orleans.Serialization.BinaryTokenStreamReader stream)
+            {
+                return EventManagerReference.Cast(((Orleans.GrainReference)(GrainReference.DeserializeGrainReference(expected, stream))));
+            }
+            
+            public System.Threading.Tasks.Task<System.Guid> AddEvent(TicketMachine.Interfaces.EventSettings eventSettings)
+            {
+
+                return base.InvokeMethodAsync<System.Guid>(-766877796, new object[] {eventSettings}, TimeSpan.Zero );
+            }
+            
+            public System.Threading.Tasks.Task<TicketMachine.Interfaces.EventInfo[]> GetAllEvents()
+            {
+
+                return base.InvokeMethodAsync<TicketMachine.Interfaces.EventInfo[]>(-1134387456, new object[] {}, TimeSpan.Zero );
+            }
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Orleans-CodeGenerator", "1.0.814.60418")]
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute()]
+    [Orleans.MethodInvokerAttribute("TicketMachine.Interfaces.IEventManager", 190099299)]
+    internal class EventManagerMethodInvoker : IGrainMethodInvoker
+    {
+        
+        public int InterfaceId
+        {
+            get
+            {
+                return 190099299;
+            }
+        }
+        
+        public async System.Threading.Tasks.Task<Object> Invoke(IAddressable grain, int interfaceId, int methodId, object[] arguments)
+        {
+                if (grain == null) throw new System.ArgumentNullException("grain");
+                switch (interfaceId)
+                {
+                    case 190099299:  // IEventManager
+                        switch (methodId)
+                        {
+                            case -766877796: 
+                                return await ((IEventManager)grain).AddEvent((EventSettings)arguments[0]);
+                            case -1134387456: 
+                                return await ((IEventManager)grain).GetAllEvents();
+                            default: 
+                                throw new NotImplementedException("interfaceId="+interfaceId+",methodId="+methodId);
+                        }
+                    default:
+                        throw new System.InvalidCastException("interfaceId="+interfaceId);
+                }
+        }
+        
+        public static string GetMethodName(int interfaceId, int methodId)
+        {
+
+            switch (interfaceId)
+            {
+                
+                case 190099299:  // IEventManager
+                    switch (methodId)
+                    {
+                        case -766877796:
+                            return "AddEvent";
+                    case -1134387456:
+                            return "GetAllEvents";
+                    case -606142484:
+                            return "GetProperties";
+                    
+                        default: 
+                            throw new NotImplementedException("interfaceId="+interfaceId+",methodId="+methodId);
+                    }
+
+                default:
+                    throw new System.InvalidCastException("interfaceId="+interfaceId);
+            }
+        }
+    }
+    
+    [Serializable()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Orleans-CodeGenerator", "1.0.814.60418")]
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute()]
+    public class EventManagerProperties
+    {
+        
+
+            public Dictionary<string,object> AsDictionary()
+            {  
+                var retValue = new Dictionary<string,object>();
+                return retValue;
+            }
+    }
+    
+    [Orleans.RegisterSerializerAttribute()]
+    internal class TicketMachine_Interfaces_EventSettingsSerialization
+    {
+        
+        static TicketMachine_Interfaces_EventSettingsSerialization()
+        {
+            Register();
+        }
+        
+        public static object DeepCopier(object original)
+        {
+            TicketMachine.Interfaces.EventSettings input = ((TicketMachine.Interfaces.EventSettings)(original));
+            TicketMachine.Interfaces.EventSettings result = new TicketMachine.Interfaces.EventSettings();
+            Orleans.Serialization.SerializationContext.Current.RecordObject(original, result);
+            result.Name = input.Name;
+            return result;
+        }
+        
+        public static void Serializer(object untypedInput, Orleans.Serialization.BinaryTokenStreamWriter stream, System.Type expected)
+        {
+            TicketMachine.Interfaces.EventSettings input = ((TicketMachine.Interfaces.EventSettings)(untypedInput));
+            Orleans.Serialization.SerializationManager.SerializeInner(input.Name, stream, typeof(String));
+        }
+        
+        public static object Deserializer(System.Type expected, Orleans.Serialization.BinaryTokenStreamReader stream)
+        {
+            TicketMachine.Interfaces.EventSettings result = new TicketMachine.Interfaces.EventSettings();
+            result.Name = ((String)(Orleans.Serialization.SerializationManager.DeserializeInner(typeof(String), stream)));
+            return result;
+        }
+        
+        public static void Register()
+        {
+            Orleans.Serialization.SerializationManager.Register(typeof(TicketMachine.Interfaces.EventSettings), DeepCopier, Serializer, Deserializer);
+        }
+    }
+    
+    [Orleans.RegisterSerializerAttribute()]
+    internal class TicketMachine_Interfaces_EventInfoSerialization
+    {
+        
+        private static System.Reflection.FieldInfo fieldInfo2;
+        
+        static TicketMachine_Interfaces_EventInfoSerialization()
+        {
+            Register();
+        }
+        
+        public static object DeepCopier(object original)
+        {
+            TicketMachine.Interfaces.EventInfo input = ((TicketMachine.Interfaces.EventInfo)(original));
+            TicketMachine.Interfaces.EventInfo result = ((TicketMachine.Interfaces.EventInfo)(System.Runtime.Serialization.FormatterServices.GetUninitializedObject(typeof(TicketMachine.Interfaces.EventInfo))));
+            Orleans.Serialization.SerializationContext.Current.RecordObject(original, result);
+            result.Id = ((Guid)(Orleans.Serialization.SerializationManager.DeepCopyInner(input.Id)));
+            object objResult = ((object)(result));
+            object temp2 = fieldInfo2.GetValue(input);
+            fieldInfo2.SetValue(objResult, temp2);
+            return objResult;
+        }
+        
+        public static void Serializer(object untypedInput, Orleans.Serialization.BinaryTokenStreamWriter stream, System.Type expected)
+        {
+            TicketMachine.Interfaces.EventInfo input = ((TicketMachine.Interfaces.EventInfo)(untypedInput));
+            Orleans.Serialization.SerializationManager.SerializeInner(input.Id, stream, typeof(Guid));
+            Orleans.Serialization.SerializationManager.SerializeInner(fieldInfo2.GetValue(input), stream, typeof(String));
+        }
+        
+        public static object Deserializer(System.Type expected, Orleans.Serialization.BinaryTokenStreamReader stream)
+        {
+            TicketMachine.Interfaces.EventInfo result = ((TicketMachine.Interfaces.EventInfo)(System.Runtime.Serialization.FormatterServices.GetUninitializedObject(typeof(TicketMachine.Interfaces.EventInfo))));
+            result.Id = ((Guid)(Orleans.Serialization.SerializationManager.DeserializeInner(typeof(Guid), stream)));
+            object objResult = ((object)(result));
+            object temp2 = ((String)(Orleans.Serialization.SerializationManager.DeserializeInner(typeof(String), stream)));
+            fieldInfo2.SetValue(objResult, temp2);
+            return objResult;
+        }
+        
+        public static void Register()
+        {
+            Orleans.Serialization.SerializationManager.Register(typeof(TicketMachine.Interfaces.EventInfo), DeepCopier, Serializer, Deserializer);
+            fieldInfo2 = typeof(TicketMachine.Interfaces.EventInfo).GetField("<Name>k__BackingField", (System.Reflection.BindingFlags.Instance 
+                            | (System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic)));
+        }
     }
 }
 #pragma warning restore 162
