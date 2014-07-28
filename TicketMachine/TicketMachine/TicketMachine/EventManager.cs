@@ -10,11 +10,11 @@ namespace TicketMachine
     {
          public override Task ActivateAsync()
          {
-             if (this.GetPrimaryKeyLong() != 0 || this.GetPrimaryKey() != Guid.Empty)
-                 throw new InvalidOperationException("You can't get other event manager other than with id = 0");
-             if (State.Events == null)
-                 this.State.Events = new List<EventInfo>();
-             this.State.WriteStateAsync();
+             //if (this.GetPrimaryKeyLong() != 0 || this.GetPrimaryKey() != Guid.Empty)
+             //    throw new InvalidOperationException("You can't get other event manager other than with id = 0");
+             //if (State.Events == null)
+             //    this.State.Events = new List<EventInfo>();
+             //this.State.WriteStateAsync();
              return base.ActivateAsync();
          }
 

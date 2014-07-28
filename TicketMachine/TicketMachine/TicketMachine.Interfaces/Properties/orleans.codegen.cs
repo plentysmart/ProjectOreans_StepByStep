@@ -395,8 +395,6 @@ namespace TicketMachine.Interfaces
     internal class TicketMachine_Interfaces_EventInfoSerialization
     {
         
-        private static System.Reflection.FieldInfo fieldInfo2;
-        
         static TicketMachine_Interfaces_EventInfoSerialization()
         {
             Register();
@@ -408,34 +406,28 @@ namespace TicketMachine.Interfaces
             TicketMachine.Interfaces.EventInfo result = ((TicketMachine.Interfaces.EventInfo)(System.Runtime.Serialization.FormatterServices.GetUninitializedObject(typeof(TicketMachine.Interfaces.EventInfo))));
             Orleans.Serialization.SerializationContext.Current.RecordObject(original, result);
             result.Id = ((Guid)(Orleans.Serialization.SerializationManager.DeepCopyInner(input.Id)));
-            object objResult = ((object)(result));
-            object temp2 = fieldInfo2.GetValue(input);
-            fieldInfo2.SetValue(objResult, temp2);
-            return objResult;
+            result.Name = input.Name;
+            return result;
         }
         
         public static void Serializer(object untypedInput, Orleans.Serialization.BinaryTokenStreamWriter stream, System.Type expected)
         {
             TicketMachine.Interfaces.EventInfo input = ((TicketMachine.Interfaces.EventInfo)(untypedInput));
             Orleans.Serialization.SerializationManager.SerializeInner(input.Id, stream, typeof(Guid));
-            Orleans.Serialization.SerializationManager.SerializeInner(fieldInfo2.GetValue(input), stream, typeof(String));
+            Orleans.Serialization.SerializationManager.SerializeInner(input.Name, stream, typeof(String));
         }
         
         public static object Deserializer(System.Type expected, Orleans.Serialization.BinaryTokenStreamReader stream)
         {
             TicketMachine.Interfaces.EventInfo result = ((TicketMachine.Interfaces.EventInfo)(System.Runtime.Serialization.FormatterServices.GetUninitializedObject(typeof(TicketMachine.Interfaces.EventInfo))));
             result.Id = ((Guid)(Orleans.Serialization.SerializationManager.DeserializeInner(typeof(Guid), stream)));
-            object objResult = ((object)(result));
-            object temp2 = ((String)(Orleans.Serialization.SerializationManager.DeserializeInner(typeof(String), stream)));
-            fieldInfo2.SetValue(objResult, temp2);
-            return objResult;
+            result.Name = ((String)(Orleans.Serialization.SerializationManager.DeserializeInner(typeof(String), stream)));
+            return result;
         }
         
         public static void Register()
         {
             Orleans.Serialization.SerializationManager.Register(typeof(TicketMachine.Interfaces.EventInfo), DeepCopier, Serializer, Deserializer);
-            fieldInfo2 = typeof(TicketMachine.Interfaces.EventInfo).GetField("<Name>k__BackingField", (System.Reflection.BindingFlags.Instance 
-                            | (System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic)));
         }
     }
 }
