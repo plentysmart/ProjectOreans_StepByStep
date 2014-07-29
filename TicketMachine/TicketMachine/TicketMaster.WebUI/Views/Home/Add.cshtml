@@ -1,0 +1,12 @@
+﻿@{
+    ViewBag.Title = "Add";
+}
+
+
+@using(Html.BeginForm("add","Home",FormMethod.Post))
+{
+
+    @Html.TextBox("eventName");
+@Html.TextBox("eventDescription");
+<input type="submit" title="Create"/>
+}

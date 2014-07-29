@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using System.Web.Mvc;
 using AttributeRouting.Web.Mvc;
+using TicketMachine;
 using TicketMachine.Interfaces;
 
 namespace TicketMaster.WebUI.Controllers
@@ -13,8 +14,16 @@ namespace TicketMaster.WebUI.Controllers
             var events = await eventManager.GetAllEvents();
             return View(events);
         }
-        [GET("/add/{eventName}")]
-        public async Task<ActionResult> Add(string eventName)
+
+        [GET("/add")]
+        public  ActionResult Add()
+        {
+            return View();
+        }
+
+
+        [POST("/add/")]
+        public async Task<ActionResult> Add(string eventName, string eventDescription)
         {
 
             var eventManager = EventManagerFactory.GetGrain(0);
