@@ -6,19 +6,17 @@ using TicketMachine.Interfaces;
 
 namespace TicketMachine
 {
+    [StorageProvider(ProviderName = "MemoryStore")]
     public class EventManager : GrainBase<IEventManagerState>, IEventManager
     {
-         public override Task ActivateAsync()
-         {
-             //if (this.GetPrimaryKeyLong() != 0 || this.GetPrimaryKey() != Guid.Empty)
-             //    throw new InvalidOperationException("You can't get other event manager other than with id = 0");
-             //if (State.Events == null)
-             //    this.State.Events = new List<EventInfo>();
-             //this.State.WriteStateAsync();
-             return base.ActivateAsync();
-         }
+        public override Task ActivateAsync()
+        {
+            if (this.GetPrimaryKeyLong() != 0 || this.GetPrimaryKey() != Guid.Empty) throw new InvalidOperationException("You can't get other event manager other than with id = 0");
+            if (State.Events == null) this.State.Events = new List<EventInfo>();
+            return this.State.WriteStateAsync();
+        }
 
-         public async Task<Guid> AddEvent(EventSettings eventSettings)
+        public async Task<Guid> AddEvent(EventSettings eventSettings)
         {
             var newId = Guid.NewGuid();
             var newEvent = EventFactory.GetGrain(newId);

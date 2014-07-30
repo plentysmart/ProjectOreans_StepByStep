@@ -1,0 +1,9 @@
+﻿@model TicketMachine.Interfaces.EventInfo
+
+<div>
+    Event sucessfully created.
+    @Html.DisplayFor(x=> x.Name)
+    @Html.DisplayFor(x=>x.Id);
+    
+    @Html.ActionLink("return","Index","Home");
+</div>

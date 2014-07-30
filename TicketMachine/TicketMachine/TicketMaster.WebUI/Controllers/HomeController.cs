@@ -18,7 +18,7 @@ namespace TicketMaster.WebUI.Controllers
         [GET("/add")]
         public  ActionResult Add()
         {
-            return View();
+            return this.View();
         }
 
 
@@ -31,12 +31,9 @@ namespace TicketMaster.WebUI.Controllers
             {
                 Name = eventName ?? "some conference" 
             };
-            var eventId= await eventManager.AddEvent(settings);
-            var response = new
-            {
-                EventId = eventId
-            };
-            return Json(response, JsonRequestBehavior.AllowGet);
+            var eventId = await eventManager.AddEvent(settings);
+            var eventInfo = new EventInfo(eventId, settings);
+            return this.View("Added",eventInfo);
         }
     }
 }
