@@ -9,9 +9,11 @@
 
     @foreach (var eventInfo in Model)
     {
-        <div>
-            <div>@eventInfo.Id</div>
-            <div>@eventInfo.Name</div>
-        </div>
+        <a href="@Url.Action(MVC.Home.Event(eventInfo.Id))">
+            <div class="well">
+                <h2>@eventInfo.Name</h2>
+                <div>@eventInfo.Description</div>
+            </div>
+        </a>
     }
 </div>

@@ -13,6 +13,7 @@ namespace TicketMachine
         {
             if (State.Initialized) throw new InvalidOperationException("Already initialized");
             this.State.Name = eventSettings.Name;
+            this.State.Description = eventSettings.Description;
             this.State.Id = this.GetPrimaryKey();
             this.State.Initialized = true;
             return this.State.WriteStateAsync();
@@ -26,5 +27,7 @@ namespace TicketMachine
         Guid Id { get; set; }
 
         bool Initialized { get; set; }
+
+        string Description { get; set; }
     }
 }

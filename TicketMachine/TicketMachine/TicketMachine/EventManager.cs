@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Orleans;
 using TicketMachine.Interfaces;
@@ -30,6 +31,12 @@ namespace TicketMachine
         public Task<EventInfo[]> GetAllEvents()
         {
             return Task.FromResult(State.Events.ToArray());
+        }
+
+        public Task<EventInfo> GetEvent(Guid id)
+        {
+            EventInfo eventInfo = State.Events.FirstOrDefault(x => x.Id == id);
+            return Task.FromResult(eventInfo);
         }
     }
 

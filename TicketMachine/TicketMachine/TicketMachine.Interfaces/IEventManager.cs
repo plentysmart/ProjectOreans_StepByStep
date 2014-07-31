@@ -13,15 +13,14 @@ namespace TicketMachine.Interfaces
 
         Task<Guid> AddEvent (EventSettings eventSettings);
         Task<EventInfo[]> GetAllEvents();
+        Task<EventInfo> GetEvent(Guid id);
     }
 
     public class EventSettings
     {
-        public string Name
-        {
-            get; set;
-        }
+        public string Name { get; set; }
 
+        public string Description { get; set; }
     }
 
     public class EventInfo
@@ -32,7 +31,10 @@ namespace TicketMachine.Interfaces
         {
             Id = id;
             Name = settings.Name;
+            Description = settings.Description;
         }
+
+        public string Description { get; set; }
 
         public string Name { get; set; }
     }
